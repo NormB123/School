@@ -1,0 +1,40 @@
+<!-- Norm Bisson's Full Stack Nanodegree Neighborhood Map Project -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Neighborhood Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://localhost:8000//css/style.css" type="text/css">
+
+  </head>
+  <body>
+  <div class="container">
+  
+	  <div class="options-box">
+    <div>
+      <label for="search">Search: </label>
+      <input id="search" data-bind="value: filter, valueUpdate: 'afterkeydown'"/>
+    </div>
+    <div>Locations List
+    </div> 
+	  	 <ul id="locationsList" data-bind="foreach: filteredItems">
+            <li> 
+                <span id="locationData" data-bind="text: name, click: clickLocation"></span>
+            </li>
+        </ul>
+    </div>
+
+		  <div id="map"></div>
+ </div>
+
+<script type="text/javascript" src="js/libs/knockout-3.4.1.js"></script>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/oauth-signature.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/app.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyC1NPu5RD6oxIF6-3Jla0IFSCPpN6WFaAE&callback=callBack&libraries=places" onerror="errorMessage()">
+</script>
+
+  </body>
+</html>
