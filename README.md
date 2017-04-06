@@ -1,4 +1,2 @@
-# School
-Not sure what to put here...
-
-A place to share code about the blog project that I'm having trouble with.
+# Nearby Locations
+A new application to see what's interesting a few miles around you.
