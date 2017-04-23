@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+		<div class = 'pane'>
+			{% for restaurant in restaurants %}
+			<div>
+				<a href = "{{url_for('restaurantMenu', restaurant_id = restaurant.id)}}"> <h3>{{restaurant.name}}</h3></a>
+				<div class = 'editdeletepane'>
+
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+{% endblock %}
+</html>

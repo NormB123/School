@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="header">
+	<h2> New Restaurant </h2>
+</div>
+<div class="pane">
+	<form action="{{ url_for('newRestaurant')}}" method = 'post'>
+		<p>Name:</p>
+			<input type ='text' size='30' name='name'>
+	<input type='submit' value='Create'>
+	<a href = '{{url_for('showRestaurants')}}'> Cancel </a>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="header">
+		<h2>Edit Menu Item for {{restaurant}}</h2>
+	</div>
+	<div class="pane">
+		<form action="{{ url_for('editMenuItem', restaurant_id = restaurant_id, menu_id = menu_id)}}" method="POST">
+		<p>Name:</p>
+		<input type="text" name="name" size="30" placeholder='{{item_name}}'><br>
+		<p>Description:</p>
+		<input type="text" name="description" size="30" placeholder='{{item_description}}'><br>
+		<p>Price:</p>
+		<input type="text" name="price" size="30" placeholder='{{item_price}}'><br>
+		<p>Course: '{{item_course}}'</p>
+			{% if item_course == 'Appetizer': %}
+				<input type="radio" name="course" value="Appetizer" checked>Appetizer<br>
+			{% else: %}
+				<input type="radio" name="course" value="Appetizer">Appetizer<br>
+			{% endif %}
+
+			{% if item_course == 'Entree': %}
+				<input type="radio" name="course" value="Entree" checked>Entree<br>
+			{% else: %}
+				<input type="radio" name="course" value="Entree">Entree<br>
+			{% endif %}
+
+			{% if item_course == 'Dessert': %}
+				<input type="radio" name="course" value="Dessert" checked>Dessert<br>
+			{% else: %}
+				<input type="radio" name="course" value="Dessert">Dessert<br>
+			{% endif %}
+			
+			{% if item_course == 'Beverage': %}
+				<input type="radio" name="course" value="Beverage" checked>Beverage<br>
+			{% else: %}
+				<input type="radio" name="course" value="Beverage">Beverage<br>
+			{% endif %}
+
+		<input type="submit" value="Edit">&nbsp;
+		| &nbsp; <a href = "{{ url_for('restaurantMenu', restaurant_id = restaurant_id) }}"> Cancel </a>
+		 </form> 
+	</div>
+{% endblock %}

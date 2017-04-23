@@ -1,0 +1,76 @@
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import cgi
+
+class webServerHandler(BaseHTTPRequestHandler):
+	def do_GET(self):
+		try:
+			if self.path.endswith("/hello"):
+				self.send_response(200)
+				self.send_header('Content-type', 'text/html')
+				self.end_headers()
+
+				output = ""
+				output += "<html><body>"
+				output += "Hello!!"
+				output += '''<form method=POST enctype='multipart/form-data' action='/hello'><h2>Say what?</h2><input name='message' type='text'><input type='submit' value='Submit'></form>'''
+				output += "</body></html>"
+				self.wfile.write(output)
+				print output  #this is temp for testing...
+				return
+
+			if self.path.endswith("/hola"):
+				self.send_response(200)
+				self.send_header('Content-type', 'text/html')
+				self.end_headers()
+
+				output = ""
+				output += "<html><body>"
+				output += "&#161Hola!!  <a href = '/hello'>Press for English</a>"
+				output += '''<form method=POST enctype='multipart/form-data' action='/hello'><h2>Say what?</h2><input name='message' type='text'><input type='submit' value='Submit'></form>'''
+				output += "</body></html>"
+				self.wfile.write(output)
+				print output  #this is temp for testing...
+				return
+
+		except IOError:
+			self.send_error(404, "File not found %s" % self.path)
+
+	def do_POST(self):
+		try:
+			self.send_response(301)
+			self.send_header('Content-type', 'text/html')
+			self.end_headers()
+
+			ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+			if ctype == 'multipart/form-data':
+				fields=cgi.parse_multipart(self.rfile, pdict)
+				messagecontent = fields.get('message')
+				print messagecontent
+
+			output = ""
+			output += "<html><body>"
+			output += "<h2>Maybe this: </h2>"  
+			output += "<h1> %s </h1>" % messagecontent[0]
+			output += '''<form method=POST enctype='multipart/form-data' action='/hello'><h2>Say what??</h2><input name="message" type="text"><input type='submit' value='Submit'></form>'''
+			output += "</body></html>"
+			self.wfile.write(output)
+			print output  #this is temp for testing...
+
+
+		except:
+			pass
+
+def main():
+	try:
+		port = 8080
+		server = HTTPServer(('', port), webServerHandler)
+		print "webserver running on port %s" % port
+		server.serve_forever()
+
+
+	except KeyboardInterrupt:  #this is a built in python interupt executed by pressing cntrl+c on the keyboard.
+		print "^C entered, web server stopped"
+		server.socket.close()
+
+if __name__ == '__main__':
+	main()

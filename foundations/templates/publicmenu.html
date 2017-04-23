@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="pane">
+		{% for i in items %}
+	<div class="nameAndPrice">
+		<p class="course">{{i.course}}</p>
+		<span class="name"><h3>{{i.name}}</h3></span>
+		<span class="price"><p>{{i.price}}</p></span>
+		</div>
+		<div class="description"><p>{{i.description}}</p></div>
+		<div class="editdeletepane">
+
+		</div><hr>
+		{% endfor %}
+
+	</div>	
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="pane">
+		<div class="header">
+		<h2>{{ restaurant.name }}</h2>
+		</div>
+
+		<a href = '{{ url_for('newMenuItem', restaurant_id = restaurant.id) }}'> Add New Menu Item </a>
+		<div class="description"><p>There are no menu items for {{ restaurant.name }}</p></div>
+	</div>
+{% endblock %}

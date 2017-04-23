@@ -1,0 +1,30 @@
+READ ME
+
+To run the application:
+Unzip foundations.zip file.
+
+From command line editor, run Python file database_setup.py.
+Run Python file finalProject.py
+Navigate to localhost:5000 and log in!
+
+
+JSON API URLs:
+
+For distinct menu items in a given restaurant in the following format:
+	'/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON'
+example:
+	http://localhost:5000/restaurants/1/menu/1/JSON
+
+
+For all menu items in a given restaurant in the following format:
+	'/restaurants/<int:restaurant_id>/menu/JSON'
+example:
+	http://localhost:5000/restaurants/1/menu/JSON
+
+
+For all restaurants in the following format:
+	'/restaurants/JSON'
+example:
+	http://localhost:5000/restaurants/JSON
+
+

@@ -1,0 +1,23 @@
+
+
+<div class="header">
+	{%if 'username' not in session %}
+	<a href="{{url_for('showLogin')}}">Login</a>
+	{% else %}
+	<a href="{{url_for('disconnect')}}">Logout</a>
+	{% endif %}
+		<h1>Restaurants</h1>
+		<a href="{{ url_for('showRestaurants') }}">Back to Restaurants</a>
+	</div>
+
+		<div class = "flash">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+					{% for message in messages %}
+						<li><strong>{{ message }}</strong></li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
